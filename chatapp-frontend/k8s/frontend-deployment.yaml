@@ -1,0 +1,40 @@
+# Kubernetes deployment for frontend
+# k8s/frontend-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatapp-frontend
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: chatapp-frontend
+  template:
+    metadata:
+      labels:
+        app: chatapp-frontend
+    spec:
+      containers:
+      - name: chatapp-frontend
+        image: chatapp/frontend:latest
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatapp-frontend
+spec:
+  selector:
+    app: chatapp-frontend
+  ports:
+  - port: 80
+    targetPort: 80
+  type: ClusterIP

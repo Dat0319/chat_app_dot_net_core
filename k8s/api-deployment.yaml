@@ -1,0 +1,65 @@
+# Kubernetes deployment for API
+# k8s/api-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatapp-api
+spec:
+  replicas: 10 # Start with 10 pods, scale as needed
+  selector:
+    matchLabels:
+      app: chatapp-api
+  template:
+    metadata:
+      labels:
+        app: chatapp-api
+    spec:
+      containers:
+        - name: chatapp-api
+          image: chatapp/api:latest
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "500m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1Gi"
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+            - name: ConnectionStrings__DefaultConnection
+              valueFrom:
+                secretKeyRef:
+                  name: chatapp-secrets
+                  key: mysql-connection-string
+            - name: ConnectionStrings__Redis
+              valueFrom:
+                secretKeyRef:
+                  name: chatapp-secrets
+                  key: redis-connection-string
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 15
+            periodSeconds: 5
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: chatapp-api
+spec:
+  selector:
+    app: chatapp-api
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP

@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "Oydhyr1nE4+hZdVgOxHQGalAkeN9KaZDSo+QDvziM74GxSjpgzVKSu34QXZvoXJd8e7gW9ZQmGcZLFB4ScdGig==",
+  "success": true,
+  "projectFilePath": "D:\\BE\\ChatApp\\src\\Core\\ChatApp.Application\\ChatApp.Application.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\dattd3\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
+    "C:\\Users\\dattd3\\.nuget\\packages\\fluentvalidation\\11.11.0\\fluentvalidation.11.11.0.nupkg.sha512",
+    "C:\\Users\\dattd3\\.nuget\\packages\\mediatr\\12.5.0\\mediatr.12.5.0.nupkg.sha512",
+    "C:\\Users\\dattd3\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\dattd3\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\dattd3\\.nuget\\packages\\microsoft.extensions.options\\8.0.0\\microsoft.extensions.options.8.0.0.nupkg.sha512",
+    "C:\\Users\\dattd3\\.nuget\\packages\\microsoft.extensions.primitives\\8.0.0\\microsoft.extensions.primitives.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
